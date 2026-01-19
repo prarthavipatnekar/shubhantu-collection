@@ -1,0 +1,30 @@
+// Customer contact information
+model Customer {
+  id          String   @id @default(cuid())
+  firstName   String
+  lastName    String
+  email       String   @unique
+  countryCode String   // e.g., "+1", "+91", etc.
+  phoneNumber String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relation to inquiries
+  inquiries   Inquiry[]
+
+  @@index([email])
+}
+
+// Customer inquiries/messages
+model Inquiry {
+  id         String   @id @default(cuid())
+  customerId String   // Reference to Customer
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  message    String   @db.Text
+  status     String   @default("pending") // pending, responded, closed
+  createdAt  DateTime @default(now())
+
+  @@index([customerId])
+  @@index([status])
+  @@index([createdAt])
+}

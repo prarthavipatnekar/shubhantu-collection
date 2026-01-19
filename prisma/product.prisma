@@ -1,0 +1,36 @@
+// Product model - stores all product information
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String   @db.Text
+
+  // Pricing
+  price       Decimal  @db.Decimal(10, 2)  // Selling price (public)
+  costPrice   Decimal? @db.Decimal(10, 2)  // Cost price (admin only)
+
+  // Media
+  images      String[] // Array of Cloudinary URLs
+
+  // Organization
+  category    String
+  sku         String?  @unique
+
+  // Inventory (admin only)
+  stock       Int      @default(0)
+  supplier    String?  // Supplier name (admin only)
+
+  // Display control
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)  // Show/hide from customers
+
+  // Admin notes
+  internalNotes String? @db.Text  // Private admin notes
+
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([featured])
+  @@index([published])
+}
