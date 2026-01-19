@@ -15,6 +15,11 @@ model Product {
   category    String
   sku         String?  @unique
 
+  // Specifications (public)
+  material    String?  // e.g., "Cotton", "Silk", "Wood", etc.
+  size        String?  // e.g., "M", "L", "10x15 cm", etc.
+  additionalInfo String[] // Array of additional details
+
   // Inventory (admin only)
   stock       Int      @default(0)
   supplier    String?  // Supplier name (admin only)

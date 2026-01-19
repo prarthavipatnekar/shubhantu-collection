@@ -100,6 +100,9 @@ export async function getProductById(id: string) {
         images: true,
         category: true,
         featured: true,
+        material: true,
+        size: true,
+        additionalInfo: true,
         createdAt: true,
       },
     })

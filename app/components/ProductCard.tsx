@@ -51,7 +51,7 @@ export default function ProductCard({ product }: { product: Product }) {
           </p>
           <div className="flex items-center justify-between">
             <span className="text-2xl font-bold text-primary">
-              ${priceValue.toFixed(2)}
+              ₹{priceValue.toLocaleString('en-IN')}
             </span>
             <span className="text-xs bg-accent/20 text-primary px-2 py-1 rounded">
               {product.category}

@@ -3,7 +3,7 @@ model Customer {
   id          String   @id @default(cuid())
   firstName   String
   lastName    String
-  email       String   @unique
+  email       String?  @unique
   countryCode String   // e.g., "+1", "+91", etc.
   phoneNumber String
   createdAt   DateTime @default(now())
@@ -12,6 +12,7 @@ model Customer {
   // Relation to inquiries
   inquiries   Inquiry[]
 
+  @@unique([countryCode, phoneNumber])
   @@index([email])
 }
 

@@ -17,11 +17,11 @@ export default async function Home() {
   ])
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-20">
+    <div className="bg-background">
+      {/* Hero Section - Full Screen */}
+      <section className="h-screen bg-primary text-primary-foreground flex items-center justify-center">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">
             Welcome to Shubhantu Collection
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-primary-foreground/90">
